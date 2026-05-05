@@ -20,6 +20,8 @@
       --grey-mid:   #9e9e9e;
       --grey-dim:   #666;
       --grey-light: #e0d8d0;
+      --labs-good: #6B7D3A; 
+      --labs-warn: #8D3A3A; 
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -518,7 +520,404 @@
       .books-grid { grid-template-columns: 1fr; }
       .pillars-grid { grid-template-columns: 1fr; }
     }
-  </style>
+    /* Two-column intro — italic lede on the left, prose on the right */
+  .labs-intro {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 72px;
+    margin-bottom: 56px;
+  }
+  .labs-lede {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--light-gold);
+    margin: 0;
+    max-width: 30ch;
+  }
+  .labs-intro p {
+    margin: 0 0 14px;
+    color: var(--off-white);
+    font-size: 16.5px;
+    line-height: 1.65;
+  }
+  .labs-intro p:last-child { margin-bottom: 0; }
+  .labs-intro strong { color: var(--white); font-weight: 600; }
+  .labs-link {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(197,160,125,0.4);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .labs-link:hover { color: var(--light-gold); border-color: var(--light-gold); }
+ 
+  /* The big cream dashboard card */
+  .labs-dashboard {
+    background: var(--warm-grey);
+    color: var(--deep-blue);
+    border-radius: 4px;
+    padding: 36px 36px 28px;
+    box-shadow: 0 30px 60px -25px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.04) inset;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+ 
+  /* Header row inside the dashboard */
+  .labs-dash-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--grey-light);
+    margin-bottom: 26px;
+  }
+  .labs-dash-title { display: flex; align-items: baseline; gap: 16px; }
+  .labs-instrument {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--bronze);
+  }
+  .labs-reading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--deep-blue);
+  }
+  .labs-dash-meta { display: flex; align-items: center; gap: 14px; }
+  .labs-date {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--grey-dim);
+  }
+  .labs-price {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    background: var(--gold);
+    color: var(--white);
+    padding: 6px 11px;
+    border-radius: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+  .labs-price-sym { font-weight: 500; opacity: 0.85; margin-right: 3px; }
+ 
+  /* Three-up metric cards */
+  .labs-metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.2fr;
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+  .labs-metric-card {
+    background: rgba(255,255,255,0.55);
+    border: 1px solid var(--grey-light);
+    border-radius: 3px;
+    padding: 18px 20px 22px;
+    display: flex;
+    flex-direction: column;
+  }
+  .labs-metric-label {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--grey-dim);
+    margin-bottom: 14px;
+  }
+  .labs-gauge { position: relative; text-align: center; padding-top: 4px; }
+  .labs-gauge svg { display: block; width: 100%; max-width: 220px; margin: 0 auto; height: auto; }
+  .labs-gauge-tick {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    fill: var(--grey-mid);
+  }
+  .labs-gauge-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--deep-blue);
+    margin-top: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .labs-gauge-status {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-top: 8px;
+  }
+  .labs-gauge-status.is-good { color: var(--labs-good); }
+  .labs-gauge-status.is-warn { color: var(--labs-warn); }
+  .labs-metric-detail {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 11.5px;
+    color: var(--grey-dim);
+    text-align: center;
+    margin-top: auto;
+    padding-top: 16px;
+    letter-spacing: 0.01em;
+  }
+ 
+  /* Coordination Map (3x3) */
+  .labs-coord-frame {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    grid-template-rows: 1fr 14px;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .labs-coord-yaxis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 8.5px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--grey-mid);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    padding: 2px 0;
+  }
+  .labs-coord-yaxis span { display: block; }
+  .labs-coord-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--grey-light);
+    border: 1px solid var(--grey-light);
+    aspect-ratio: 3 / 2.2;
+  }
+  .labs-coord-cell {
+    background: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--grey-dim);
+    position: relative;
+    padding: 4px;
+    text-align: center;
+  }
+  .labs-coord-cell.is-active {
+    background: var(--light-gold);
+    color: var(--deep-blue);
+    font-style: normal;
+    font-weight: 500;
+  }
+  .labs-coord-cell.is-active::after {
+    content: '';
+    position: absolute;
+    width: 5px; height: 5px;
+    background: var(--bronze);
+    border-radius: 50%;
+    right: 8px; top: 8px;
+  }
+  .labs-coord-xaxis {
+    grid-column: 2;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 8.5px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--grey-mid);
+    padding: 0 4px;
+  }
+  .labs-coord-result {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--grey-light);
+  }
+  .labs-coord-action {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bronze);
+  }
+  .labs-coord-context {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 11px;
+    color: var(--grey-dim);
+  }
+ 
+  /* Signal table */
+  .labs-signals {
+    border-top: 1px solid var(--grey-light);
+    padding-top: 18px;
+    margin-bottom: 24px;
+  }
+  .labs-signals-head, .labs-signal-row {
+    display: grid;
+    grid-template-columns: 110px 1fr 180px 56px;
+    align-items: center;
+    gap: 24px;
+    padding: 11px 4px;
+  }
+  .labs-signals-head {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--grey-mid);
+    border-bottom: 1px solid var(--grey-light);
+    padding-bottom: 9px;
+  }
+  .labs-signals-head .labs-pts-col { text-align: right; }
+  .labs-signal-row {
+    border-bottom: 1px solid rgba(224, 216, 208, 0.5);
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .labs-signal-row:last-child { border-bottom: none; }
+  .labs-signal-name {
+    font-size: 16px;
+    color: var(--deep-blue);
+    font-weight: 500;
+  }
+  .labs-signal-bar {
+    height: 4px;
+    background: var(--grey-light);
+    border-radius: 2px;
+    position: relative;
+  }
+  .labs-signal-bar::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 9px; height: 9px;
+    background: var(--bronze);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    left: var(--pos, 50%);
+    box-shadow: 0 0 0 3px var(--warm-grey);
+  }
+  .labs-signal-detail {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 11.5px;
+    color: var(--grey-dim);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+  .labs-signal-pts {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--deep-blue);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+ 
+  /* 90-day history chart */
+  .labs-history {
+    border-top: 1px solid var(--grey-light);
+    padding-top: 16px;
+    margin-bottom: 22px;
+  }
+  .labs-history-label {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--grey-mid);
+    margin-bottom: 10px;
+  }
+  .labs-history svg {
+    display: block;
+    width: 100%;
+    height: 90px;
+  }
+ 
+  /* Dashboard footer */
+  .labs-dash-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--grey-light);
+    padding-top: 14px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--grey-mid);
+  }
+  .labs-dash-foot .labs-dash-foot-brand { color: var(--bronze); }
+ 
+  /* Action row below the dashboard */
+  .labs-action {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-top: 36px;
+  }
+  .labs-cta {
+    display: inline-block;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--off-white);
+    text-decoration: none;
+    padding: 14px 24px;
+    border: 1px solid rgba(197, 160, 125, 0.5);
+    border-radius: 2px;
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+  }
+  .labs-cta:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--deep-blue);
+  }
+  .labs-cta-arrow { display: inline-block; margin-left: 6px; transition: transform 0.25s; }
+  .labs-cta:hover .labs-cta-arrow { transform: translateX(3px); }
+  .labs-update {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14.5px;
+    color: var(--grey-mid);
+  }
+ 
+  /* Responsive — stack on narrow screens */
+  @media (max-width: 880px) {
+    .labs-intro { grid-template-columns: 1fr; gap: 28px; }
+    .labs-metrics-grid { grid-template-columns: 1fr; }
+    .labs-dashboard { padding: 24px 20px 22px; }
+    .labs-signals-head, .labs-signal-row {
+      grid-template-columns: 90px 1fr 50px;
+      gap: 14px;
+    }
+    .labs-signals-head .labs-detail-col,
+    .labs-signal-row .labs-signal-detail { display: none; }
+    .labs-action { flex-direction: column; align-items: flex-start; gap: 14px; }
+  }
+   </style>
 </head>
 <body>
 
@@ -639,6 +1038,211 @@
     </div>
   </section>
 
+  <section id="labs">
+  <div class="section-inner">
+    <div class="section-label">IV. Cursus Labs</div>
+    <h2 class="section-title">Research tools, made <em>visible</em>.</h2>
+    <div class="section-rule"></div>
+ 
+    <div class="labs-intro reveal">
+      <div>
+        <p class="labs-lede">Some of the systems we build for the firm are useful enough to share. Cursus Labs is where they live in the open.</p>
+      </div>
+      <div>
+        <p><strong>Undertow</strong> is our first published instrument — a daily systematic risk monitor for Bitcoin. It distills five stress signals (trend, momentum, volatility, derivatives, liquidity) into a single 0–100 score, paired with a continuous value layer derived from the Bubble Index and the 200-week moving average.</p>
+        <p>The dashboard below shows today's reading. It is the same instrument we consult internally before every regime decision. Methodology, weights, and calibration are documented openly on our <a class="labs-link" href="#">Substack</a>.</p>
+      </div>
+    </div>
+ 
+    <!-- The dashboard -->
+    <div class="labs-dashboard reveal">
+ 
+      <header class="labs-dash-head">
+        <div class="labs-dash-title">
+          <span class="labs-instrument">Undertow</span>
+          <span class="labs-reading">Daily Reading</span>
+        </div>
+        <div class="labs-dash-meta">
+          <span class="labs-date" data-labs="date">21 Apr 2026</span>
+          <span class="labs-price"><span class="labs-price-sym">₿</span><span data-labs="price">78,310</span></span>
+        </div>
+      </header>
+ 
+      <div class="labs-metrics-grid">
+ 
+        <!-- RISK SCORE -->
+        <div class="labs-metric-card">
+          <div class="labs-metric-label">Risk Score</div>
+          <div class="labs-gauge">
+            <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" aria-label="Risk Score gauge: 54 of 100">
+              <defs>
+                <linearGradient id="labsGaugeGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%"  stop-color="#8D3A3A" />
+                  <stop offset="38%" stop-color="#8D623A" />
+                  <stop offset="62%" stop-color="#C5A07D" />
+                  <stop offset="100%" stop-color="#6B7D3A" />
+                </linearGradient>
+              </defs>
+              <!-- Track -->
+              <path d="M 20 100 A 80 80 0 0 1 180 100"
+                    fill="none" stroke="#e6dfd7" stroke-width="11" stroke-linecap="round"/>
+              <!-- Filled gradient arc (shows full range) -->
+              <path d="M 20 100 A 80 80 0 0 1 180 100"
+                    fill="none" stroke="url(#labsGaugeGrad)" stroke-width="11" stroke-linecap="round" opacity="0.92"/>
+              <!-- Tick labels -->
+              <text class="labs-gauge-tick" x="20"  y="120" text-anchor="middle">0</text>
+              <text class="labs-gauge-tick" x="180" y="120" text-anchor="middle">100</text>
+              <!-- Needle (rotated by (score - 50) * 1.8 = 7.2deg for score 54) -->
+              <g transform="rotate(7.2 100 100)" data-labs="risk-needle">
+                <line x1="100" y1="100" x2="100" y2="32"
+                      stroke="#263238" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="100" cy="100" r="5" fill="#263238"/>
+                <circle cx="100" cy="100" r="2" fill="#f4f1ed"/>
+              </g>
+            </svg>
+            <div class="labs-gauge-value" data-labs="risk-score">54</div>
+            <div class="labs-gauge-status" data-labs="risk-status">Cautious</div>
+          </div>
+          <div class="labs-metric-detail" data-labs="risk-detail">Mixed signals · elevated uncertainty</div>
+        </div>
+ 
+        <!-- VALUE SCORE -->
+        <div class="labs-metric-card">
+          <div class="labs-metric-label">Value Score</div>
+          <div class="labs-gauge">
+            <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" aria-label="Value Score gauge: 71 of 100">
+              <path d="M 20 100 A 80 80 0 0 1 180 100"
+                    fill="none" stroke="#e6dfd7" stroke-width="11" stroke-linecap="round"/>
+              <path d="M 20 100 A 80 80 0 0 1 180 100"
+                    fill="none" stroke="url(#labsGaugeGrad)" stroke-width="11" stroke-linecap="round" opacity="0.92"/>
+              <text class="labs-gauge-tick" x="20"  y="120" text-anchor="middle">0</text>
+              <text class="labs-gauge-tick" x="180" y="120" text-anchor="middle">100</text>
+              <!-- Score 71 → rotate (71-50)*1.8 = 37.8deg -->
+              <g transform="rotate(37.8 100 100)" data-labs="value-needle">
+                <line x1="100" y1="100" x2="100" y2="32"
+                      stroke="#263238" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="100" cy="100" r="5" fill="#263238"/>
+                <circle cx="100" cy="100" r="2" fill="#f4f1ed"/>
+              </g>
+            </svg>
+            <div class="labs-gauge-value" data-labs="value-score">71</div>
+            <div class="labs-gauge-status is-good" data-labs="value-status">Good Value</div>
+          </div>
+          <div class="labs-metric-detail" data-labs="value-detail">200W&nbsp;MA: +27% · Bubble Index: −4.3</div>
+        </div>
+ 
+        <!-- COORDINATION MAP -->
+        <div class="labs-metric-card">
+          <div class="labs-metric-label">Coordination Map</div>
+          <div class="labs-coord-frame">
+            <div class="labs-coord-yaxis">
+              <span>Risk On</span>
+              <span>Risk Off</span>
+            </div>
+            <div class="labs-coord-grid">
+              <div class="labs-coord-cell" data-labs="coord-cell">Reduce</div>
+              <div class="labs-coord-cell" data-labs="coord-cell">Hold</div>
+              <div class="labs-coord-cell" data-labs="coord-cell">Ride</div>
+              <div class="labs-coord-cell" data-labs="coord-cell">Trim</div>
+              <div class="labs-coord-cell is-active" data-labs="coord-cell">DCA</div>
+              <div class="labs-coord-cell" data-labs="coord-cell">Add</div>
+              <div class="labs-coord-cell" data-labs="coord-cell">Defend</div>
+              <div class="labs-coord-cell" data-labs="coord-cell">Accumulate</div>
+              <div class="labs-coord-cell" data-labs="coord-cell">Far Push</div>
+            </div>
+            <div></div>
+            <div class="labs-coord-xaxis">
+              <span>Overheated</span>
+              <span>Deep Value</span>
+            </div>
+          </div>
+          <div class="labs-coord-result">
+            <span class="labs-coord-action" data-labs="coord-action">DCA</span>
+            <span class="labs-coord-context" data-labs="coord-context">Cautious risk · Good value</span>
+          </div>
+        </div>
+ 
+      </div><!-- /metrics-grid -->
+ 
+      <!-- SIGNAL TABLE -->
+      <div class="labs-signals">
+        <header class="labs-signals-head">
+          <span>Signal</span>
+          <span>Range / Position</span>
+          <span class="labs-detail-col">Detail</span>
+          <span class="labs-pts-col">Pts</span>
+        </header>
+ 
+        <div class="labs-signal-row" data-labs="signal-row">
+          <span class="labs-signal-name" data-labs="signal-name">Momentum</span>
+          <span class="labs-signal-bar" data-labs="signal-bar" style="--pos: 88%;"></span>
+          <span class="labs-signal-detail" data-labs="signal-detail">30d&nbsp;+11.0%</span>
+          <span class="labs-signal-pts" data-labs="signal-pts">21/26</span>
+        </div>
+        <div class="labs-signal-row" data-labs="signal-row">
+          <span class="labs-signal-name" data-labs="signal-name">Derivatives</span>
+          <span class="labs-signal-bar" data-labs="signal-bar" style="--pos: 64%;"></span>
+          <span class="labs-signal-detail" data-labs="signal-detail">FR&nbsp;−0.0250%</span>
+          <span class="labs-signal-pts" data-labs="signal-pts">12/19</span>
+        </div>
+        <div class="labs-signal-row" data-labs="signal-row">
+          <span class="labs-signal-name" data-labs="signal-name">Liquidity</span>
+          <span class="labs-signal-bar" data-labs="signal-bar" style="--pos: 28%;"></span>
+          <span class="labs-signal-detail" data-labs="signal-detail">$57.1B&nbsp;+1.3%</span>
+          <span class="labs-signal-pts" data-labs="signal-pts">9/14</span>
+        </div>
+        <div class="labs-signal-row" data-labs="signal-row">
+          <span class="labs-signal-name" data-labs="signal-name">Volatility</span>
+          <span class="labs-signal-bar" data-labs="signal-bar" style="--pos: 18%;"></span>
+          <span class="labs-signal-detail" data-labs="signal-detail">HV14&nbsp;67th&nbsp;pctile</span>
+          <span class="labs-signal-pts" data-labs="signal-pts">7/23</span>
+        </div>
+        <div class="labs-signal-row" data-labs="signal-row">
+          <span class="labs-signal-name" data-labs="signal-name">Trend</span>
+          <span class="labs-signal-bar" data-labs="signal-bar" style="--pos: 46%;"></span>
+          <span class="labs-signal-detail" data-labs="signal-detail">−11.4%&nbsp;vs&nbsp;200&nbsp;DMA</span>
+          <span class="labs-signal-pts" data-labs="signal-pts">6/18</span>
+        </div>
+      </div>
+ 
+      <!-- 90-DAY HISTORY -->
+      <div class="labs-history">
+        <div class="labs-history-label">90-Day Score History</div>
+        <svg viewBox="0 0 600 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-label="90-day score history">
+          <!-- subtle baseline -->
+          <line x1="0" y1="45" x2="600" y2="45" stroke="#e6dfd7" stroke-width="1" stroke-dasharray="2 4"/>
+          <!-- score line — gentle wave between ~38 and ~62 over 90 days -->
+          <path d="M 0 38
+                   C 30 32, 60 48, 90 52
+                   S 150 60, 180 56
+                   S 240 38, 270 34
+                   S 330 28, 360 36
+                   S 420 56, 450 62
+                   S 510 48, 540 42
+                   S 590 36, 600 38"
+                fill="none" stroke="#8D623A" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"
+                data-labs="history-line"/>
+          <!-- end-point marker at today's reading -->
+          <circle cx="600" cy="38" r="3.5" fill="#8D623A" data-labs="history-dot"/>
+          <circle cx="600" cy="38" r="1.5" fill="#f4f1ed" data-labs="history-dot-inner"/>
+        </svg>
+      </div>
+ 
+      <!-- DASHBOARD FOOTER -->
+      <footer class="labs-dash-foot">
+        <span class="labs-dash-foot-brand">Cursus Labs</span>
+        <span>Coinglass · Yahoo · DefiLlama · Not Financial Advice</span>
+      </footer>
+ 
+    </div><!-- /labs-dashboard -->
+ 
+    <div class="labs-action reveal">
+      <a href="https://substack.com/home/post/p-193774442" class="labs-cta" target="_blank" rel="noopener">Read the Methodology<span class="labs-cta-arrow">→</span></a>
+    </div>
+ 
+  </div><!-- /section-inner -->
+</section>
+
   <!-- CONTACT -->
   <section id="contact">
     <div class="section-inner">
@@ -690,6 +1294,103 @@
       document.getElementById('heroBg').classList.add('loaded');
     });
   </script>
-
+<script>
+(function () {
+  fetch('data/undertow.json', { cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) { if (d) hydrate(d); })
+    .catch(function () { /* keep static defaults */ });
+ 
+  function hydrate(d) {
+    var $  = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    function setText(sel, val) {
+      var el = $(sel);
+      if (el && val !== undefined && val !== null) el.textContent = val;
+    }
+ 
+    // Header
+    if (d.as_of_date) {
+      var date = new Date(d.as_of_date);
+      if (!isNaN(date)) {
+        setText('[data-labs="date"]',
+          date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }));
+      }
+    }
+    if (d.btc_price != null) {
+      setText('[data-labs="price"]', Math.round(d.btc_price).toLocaleString('en-US'));
+    }
+ 
+    // Risk gauge
+    setText('[data-labs="risk-score"]',  d.risk_score);
+    setText('[data-labs="risk-status"]', d.risk_status);
+    setText('[data-labs="risk-detail"]', d.risk_detail);
+    if (d.risk_score != null) {
+      var rn = $('[data-labs="risk-needle"]');
+      if (rn) rn.setAttribute('transform', 'rotate(' + ((d.risk_score - 50) * 1.8) + ' 100 100)');
+    }
+ 
+    // Value gauge (with optional status colour class: "is-good" / "is-warn" / "")
+    setText('[data-labs="value-score"]',  d.value_score);
+    setText('[data-labs="value-detail"]', d.value_detail);
+    var vs = $('[data-labs="value-status"]');
+    if (vs && d.value_status != null) {
+      vs.textContent = d.value_status;
+      vs.className = 'labs-gauge-status' + (d.value_status_class ? ' ' + d.value_status_class : '');
+    }
+    if (d.value_score != null) {
+      var vn = $('[data-labs="value-needle"]');
+      if (vn) vn.setAttribute('transform', 'rotate(' + ((d.value_score - 50) * 1.8) + ' 100 100)');
+    }
+ 
+    // Coordination map (cell index 0..8, row-major; 4 = centre / DCA)
+    if (d.coord_active_cell != null) {
+      $$('[data-labs="coord-cell"]').forEach(function (cell, i) {
+        cell.classList.toggle('is-active', i === d.coord_active_cell);
+      });
+    }
+    setText('[data-labs="coord-action"]',  d.coord_action);
+    setText('[data-labs="coord-context"]', d.coord_context);
+ 
+    // Signal table
+    if (Array.isArray(d.signals)) {
+      $$('[data-labs="signal-row"]').forEach(function (row, i) {
+        var s = d.signals[i];
+        if (!s) return;
+        var name   = row.querySelector('[data-labs="signal-name"]');
+        var bar    = row.querySelector('[data-labs="signal-bar"]');
+        var detail = row.querySelector('[data-labs="signal-detail"]');
+        var pts    = row.querySelector('[data-labs="signal-pts"]');
+        if (name   && s.name        != null) name.textContent   = s.name;
+        if (bar    && s.position_pct != null) bar.style.setProperty('--pos', s.position_pct + '%');
+        if (detail && s.detail      != null) detail.textContent = s.detail;
+        if (pts    && s.points      != null) pts.textContent    = s.points;
+      });
+    }
+ 
+    // 90-day score history (array of numeric scores, 0–100)
+    if (Array.isArray(d.history_90d) && d.history_90d.length > 1) {
+      var w = 600, h = 90, padTop = 6, padBot = 6;
+      var n = d.history_90d.length;
+      var coords = d.history_90d.map(function (v, i) {
+        var clamped = Math.max(0, Math.min(100, Number(v) || 0));
+        var x = (i / (n - 1)) * w;
+        var y = h - padBot - (clamped / 100) * (h - padTop - padBot);
+        return [x, y];
+      });
+      var path = coords.map(function (p, i) {
+        return (i === 0 ? 'M ' : 'L ') + p[0].toFixed(1) + ' ' + p[1].toFixed(1);
+      }).join(' ');
+      var line     = $('[data-labs="history-line"]');
+      var dot      = $('[data-labs="history-dot"]');
+      var dotInner = $('[data-labs="history-dot-inner"]');
+      if (line) line.setAttribute('d', path);
+      var last = coords[coords.length - 1];
+      if (dot)      { dot.setAttribute('cx', last[0]);      dot.setAttribute('cy', last[1]); }
+      if (dotInner) { dotInner.setAttribute('cx', last[0]); dotInner.setAttribute('cy', last[1]); }
+    }
+  }
+})();
+</script>
 </body>
 </html>

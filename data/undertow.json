@@ -9,7 +9,7 @@
   "value_status": "Good Value",
   "value_status_class": "is-good",
   "value_detail": "200W MA: +34.7% ($60,564) · Bubble: -2.1",
-  "coord_active_cell": 2,
+  "coord_active_cell": 0,
   "coord_action": "Accumulate",
   "coord_context": "Risk On · Good Value",
   "signals": [

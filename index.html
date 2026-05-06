@@ -1148,24 +1148,24 @@
               <span class="labs-coord-yaxis-bot">Risk Off</span>
             </div>
             <div class="labs-coord-grid">
-              <div class="labs-coord-cell" data-labs="coord-cell">Reduce</div>
-              <div class="labs-coord-cell" data-labs="coord-cell">Hold</div>
+              <div class="labs-coord-cell" data-labs="coord-cell">Accumulate</div>
               <div class="labs-coord-cell" data-labs="coord-cell">Ride</div>
               <div class="labs-coord-cell" data-labs="coord-cell">Trim</div>
-              <div class="labs-coord-cell is-active" data-labs="coord-cell">DCA</div>
-              <div class="labs-coord-cell" data-labs="coord-cell">Add</div>
+              <div class="labs-coord-cell" data-labs="coord-cell">DCA</div>
+              <div class="labs-coord-cell is-active" data-labs="coord-cell">Hold</div>
+              <div class="labs-coord-cell" data-labs="coord-cell">Reduce</div>
+              <div class="labs-coord-cell" data-labs="coord-cell">Fat Pitch</div>
+              <div class="labs-coord-cell" data-labs="coord-cell">Reduce</div>
               <div class="labs-coord-cell" data-labs="coord-cell">Defend</div>
-              <div class="labs-coord-cell" data-labs="coord-cell">Accumulate</div>
-              <div class="labs-coord-cell" data-labs="coord-cell">Far Push</div>
             </div>
             <div></div>
             <div class="labs-coord-xaxis">
-              <span>Overheated</span>
-              <span>Deep Value</span>
+              <span>Cheap</span>
+              <span>Not Cheap</span>
             </div>
           </div>
           <div class="labs-coord-result">
-            <span class="labs-coord-action" data-labs="coord-action">DCA</span>
+            <span class="labs-coord-action" data-labs="coord-action">Hold</span>
             <span class="labs-coord-context" data-labs="coord-context">Cautious risk · Good value</span>
           </div>
         </div>
@@ -1355,7 +1355,7 @@
       if (vn) vn.setAttribute('transform', 'rotate(' + ((d.value_score - 50) * 1.8) + ' 100 100)');
     }
  
-    // Coordination map (cell index 0..8, row-major; 4 = centre / DCA)
+    // Coordination map (cell index 0..8, row-major; 4 = centre / Hold)
     if (d.coord_active_cell != null) {
       $$('[data-labs="coord-cell"]').forEach(function (cell, i) {
         cell.classList.toggle('is-active', i === d.coord_active_cell);

@@ -33,18 +33,19 @@
     },
     {
       "name": "Liquidity",
-      "position_pct": 64,
+      "position_pct": 66,
       "detail": "Stablecoin supply: $320B (30d: +1.6%)",
       "points": "9/14"
     },
     {
       "name": "Trend",
-      "position_pct": 44,
+      "position_pct": 46,
       "detail": "-2.2% below 200 DMA ($83,420)",
       "points": "8/18"
     }
   ],
   "history_90d": [
+    33,
     26,
     27,
     24,
@@ -133,7 +134,6 @@
     74,
     78,
     75,
-    71,
     71
   ]
 }

@@ -1331,8 +1331,12 @@
  
     // Risk gauge
     setText('[data-labs="risk-score"]',  d.risk_score);
-    setText('[data-labs="risk-status"]', d.risk_status);
     setText('[data-labs="risk-detail"]', d.risk_detail);
+    var rs = $('[data-labs="risk-status"]');
+    if (rs && d.risk_status != null) {
+      rs.textContent = d.risk_status;
+      rs.className = 'labs-gauge-status' + (d.risk_status_class ? ' ' + d.risk_status_class : '');
+    }
     if (d.risk_score != null) {
       var rn = $('[data-labs="risk-needle"]');
       if (rn) rn.setAttribute('transform', 'rotate(' + ((d.risk_score - 50) * 1.8) + ' 100 100)');

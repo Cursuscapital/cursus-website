@@ -678,22 +678,24 @@
     gap: 8px;
     margin-top: 4px;
   }
-  .labs-coord-yaxis {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 8.5px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--grey-mid);
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    padding: 2px 0;
-  }
-  .labs-coord-yaxis span { display: block; }
+.labs-coord-yaxis {
+  position: relative;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+}
+.labs-coord-yaxis span {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) rotate(-90deg);
+  transform-origin: center;
+  white-space: nowrap;
+}
+.labs-coord-yaxis-top { top: 8%; }
+.labs-coord-yaxis-bot { bottom: 8%; }
   .labs-coord-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1051,11 +1053,11 @@
  
     <div class="labs-intro reveal">
       <div>
-        <p class="labs-lede">Some of the systems we build for the firm are useful enough to share. Cursus Labs is where they live in the open.</p>
+        <p class="labs-lede">Cursus Labs is the research arm of Cursus Capital — where the quantitative work lives in the open.</p>
       </div>
       <div>
-        <p><strong>Undertow</strong> is our first published instrument — a daily systematic risk monitor for Bitcoin. It distills five stress signals (trend, momentum, volatility, derivatives, liquidity) into a single 0–100 score, paired with a continuous value layer derived from the Bubble Index and the 200-week moving average.</p>
-        <p>The dashboard below shows today's reading. It is the same instrument we consult internally before every regime decision. Methodology, weights, and calibration are documented openly on our <a class="labs-link" href="#">Substack</a>.</p>
+        <p><strong>Cursus Labs</strong> publishes quantitative research at the intersection of macro, derivatives, and on-chain data — work that stands on its own, outside of what we trade. Our first published instrument is <strong>Undertow</strong>: a daily risk monitor for Bitcoin. Five stress signals (trend, momentum, volatility, derivatives, liquidity) distilled into a single 0–100 score, paired with a continuous value layer from the Bubble Index and the 200-week moving average. The combination maps to a regime-aware allocation framework — Accumulate, DCA, Hold, or Reduce.</p>
+        <p>Undertow is not what Cursus Capital trades. Our proprietary strategies are systematic, quantitative, and operate on different signals and time horizons. Undertow is built for the long-term allocator who wants a framework instead of a feeling. Methodology is documented openly on our <a class="labs-link" href="https://substack.com/home/post/p-193774442">Substack</a>.</p>
       </div>
     </div>
  
@@ -1141,8 +1143,8 @@
           <div class="labs-metric-label">Coordination Map</div>
           <div class="labs-coord-frame">
             <div class="labs-coord-yaxis">
-              <span>Risk On</span>
-              <span>Risk Off</span>
+              <span class="labs-coord-yaxis-top">Risk On</span>
+              <span class="labs-coord-yaxis-bot">Risk Off</span>
             </div>
             <div class="labs-coord-grid">
               <div class="labs-coord-cell" data-labs="coord-cell">Reduce</div>

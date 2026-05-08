@@ -1,51 +1,50 @@
 {
-  "as_of_date": "2026-05-07",
-  "btc_price": 80833,
-  "risk_score": 77,
+  "as_of_date": "2026-05-08",
+  "btc_price": 79583,
+  "risk_score": 75,
   "risk_status": "Risk On",
   "risk_status_class": "is-good",
   "risk_detail": "Conditions are healthy.",
   "value_score": 68,
   "value_status": "Good Value",
   "value_status_class": "is-good",
-  "value_detail": "200W MA: +33.4% ($60,607) · Bubble: -1.7",
+  "value_detail": "200W MA: +31.2% ($60,648) · Bubble: -1.4",
   "coord_active_cell": 0,
   "coord_action": "Accumulate",
   "coord_context": "Risk On · Good Value",
   "signals": [
     {
       "name": "Momentum",
-      "position_pct": 90,
-      "detail": "30d return: +16.0%",
-      "points": "23/26"
+      "position_pct": 75,
+      "detail": "30d return: +10.1%",
+      "points": "19/26"
     },
     {
       "name": "Volatility",
-      "position_pct": 91,
-      "detail": "HV14: 23 (9th pctile)",
-      "points": "21/23"
+      "position_pct": 84,
+      "detail": "HV14: 26 (16th pctile)",
+      "points": "19/23"
     },
     {
       "name": "Derivatives",
-      "position_pct": 79,
-      "detail": "Funding: -0.0026%",
-      "points": "15/19"
+      "position_pct": 98,
+      "detail": "Funding: +0.0002%",
+      "points": "19/19"
     },
     {
       "name": "Liquidity",
-      "position_pct": 71,
-      "detail": "Stablecoin supply: $322B (30d: +2.1%)",
-      "points": "10/14"
+      "position_pct": 67,
+      "detail": "Stablecoin supply: $321B (30d: +1.7%)",
+      "points": "9/14"
     },
     {
       "name": "Trend",
-      "position_pct": 45,
-      "detail": "-2.9% below 200 DMA ($83,285)",
+      "position_pct": 43,
+      "detail": "-4.3% below 200 DMA ($83,142)",
       "points": "8/18"
     }
   ],
   "history_90d": [
-    26,
     27,
     24,
     23,
@@ -134,6 +133,7 @@
     78,
     75,
     71,
-    77
+    77,
+    75
   ]
 }

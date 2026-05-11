@@ -70,10 +70,14 @@ No overlapping memberships. Each cell belongs to exactly one family correspondin
 ### Window 4: Grinding Bear Mid-Phase
 - ≥60% of window days in **Cautious** OR **Defensive** families combined
 - Rationale: extended bear without acute crisis; framework may shift between Cautious and Defensive across the window without acute capitulation
+- **Note on test design:** this test is designed to verify "not Aggressive" rather than "specifically Cautious." A degenerate case where the framework classifies W4 as 95% Defensive would pass the v1.1 test. This is acceptable for v1.1 and observed in the validation output. If the degenerate case occurs, criteria differentiation is a v1.2 design question.
 
 ### Window 5: Grinding Bull Mid-Phase
 - ≥70% of window days in **Aggressive** family
-- **Trajectory expectation:** framework should NOT predominantly fire Trim until the final third of the window. First two-thirds should be dominated by Accumulate, Ride, or DCA (if Cautious overflow occurs early). This trajectory test is an additional criterion alongside the family recall threshold and must also be satisfied for W5 to pass.
+- **Trajectory expectation** (two conditions, both must hold):
+  (a) Trim fires on <25% of days in the first two-thirds of W5 (2024-01-15 through 2024-02-22)
+  (b) Trim fires more frequently in the final third (2024-02-23 through 2024-03-15) than in the first two-thirds
+- This trajectory test is an additional criterion alongside the family recall threshold and must also be satisfied for W5 to pass.
 - Rationale: tests whether the framework tracks the trajectory of a bull market or just the endpoint
 
 ---
@@ -86,8 +90,8 @@ Each label is computable purely from BTC daily price data, using only trailing w
 |---|---|
 | **Fat Pitch** | Day is in BTC drawdown >30% from trailing 90d high |
 | **Trim** | Day is within 15% below trailing 365d high AND BTC has gained >50% over trailing 180d |
-| **Defend** | Day is in 90d drawdown >20% AND drawdown is from a high that itself was within 30% of the trailing 365d high |
-| **Accumulate** | Day is >40% below trailing 365d high AND BTC has gained >20% over trailing 90d |
+| **Defend** | Day is in 90d drawdown >20% AND drawdown is from a high that itself was within 15% of the trailing 365d high |
+| **Accumulate** | Day is >40% below trailing 365d high AND BTC has gained 20-40% over trailing 90d |
 | **Ride** | Day is within 30% of trailing 365d high AND BTC has gained >0% over trailing 90d AND is not in 90d drawdown >15% |
 | **DCA** | Day is >30% below trailing 365d high AND not in 90d drawdown >15% AND no >20% gain in trailing 90d |
 

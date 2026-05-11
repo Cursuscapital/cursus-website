@@ -171,3 +171,55 @@ These refactor specs are documented here for context but are not part of the loc
 ## Locked: 2026-05-07
 
 No window definitions, expectations, family mappings, operational labels, precision thresholds, pass/fail rules, or stop rules will be modified after the commit hash of this file. Any deviations from these specifications during refactor or validation must be documented as explicit overrides in a v1.2 addendum, not silent changes.
+
+---
+
+## Appendix A: v1.2-vs-v2 Decision (locked 2026-05-11)
+
+If v1.1 validation fails per the pass/fail rule defined above, the response is:
+
+**Withdraw Undertow's public version and rebuild as v2 from the ground up.** 
+Do NOT iterate via v1.2 with a third pre-registration cycle.
+
+Rationale (per external advisor review, 2026-05-11):
+Three pre-registrations in two weeks would read as a calibration crisis 
+rather than discipline, regardless of whether each individual iteration 
+was genuinely pre-registered. The discipline holds at the per-iteration 
+level but degrades at the meta-level when iteration speed is high.
+
+v2 rebuild specifics:
+- Public methodology page replaced with "v1 retired pending v2 redesign" 
+  statement
+- Live dashboard either taken offline or marked as "historical illustration 
+  only — v2 in development"
+- v2 design begins from first principles, with a planning horizon of weeks 
+  rather than days
+- No artificial timeline pressure on v2; it ships when it's right, not when 
+  v1.1's failure timer expires
+
+This decision is committed before v1.1 validation runs, to remove the 
+possibility of post-hoc rationalization toward v1.2 under time pressure 
+if v1.1 fails.
+
+---
+
+## Appendix B: Refactor Execution Discipline (locked 2026-05-11)
+
+Per external advisor instruction:
+
+1. **Script-SHA logging:** The validation output must record both the 
+   pre-registration commit hash AND the git SHA of the refactor/validation 
+   script used. This enables exact reproducibility.
+
+2. **No mid-run adjustments:** Refactor and validation run end-to-end. 
+   Intermediate results are NOT inspected with the goal of adjusting code 
+   mid-run.
+
+3. **Code-bug protocol:** If a clear code bug is identified during refactor 
+   execution, partial results are discarded, the bug is fixed, the script 
+   is recommitted (new SHA), and the run restarts from scratch. No partial 
+   carrying-forward of intermediate results.
+
+4. **Validation output as artifact:** The validation output is a committed 
+   artifact in the repository (under methodology/validations/v1.1/), not 
+   just an email attachment. Both pass and fail outputs are committed.
